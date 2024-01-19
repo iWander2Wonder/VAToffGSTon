@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>VAT and GST Calculator</title>
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           background-color: #f5f5f5;
+           margin: 0;
+           padding: 0;
+       }
+
+
+       h1 {
+           text-align: center;
+           margin-top: 20px;
+           color: #333;
+       }
+
+
+       form {
+           text-align: center;
+           margin-top: 20px;
+       }
+
+
+       label {
+           font-weight: bold;
+           margin-right: 10px;
+       }
+
+
+       input[type="text"] {
+           padding: 10px;
+           font-size: 16px;
+           border: 1px solid #ccc;
+           border-radius: 5px;
+       }
+
+
+       button {
+           padding: 10px 20px;
+           font-size: 16px;
+           background-color: #007bff;
+           color: #fff;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+       }
+
+
+       button:hover {
+           background-color: #0056b3;
+       }
+
+
+       .result {
+           text-align: center;
+           margin-top: 20px;
+           padding: 10px;
+           background-color: #fff;
+           border: 1px solid #ccc;
+           border-radius: 5px;
+       }
+
+
+       .error {
+           color: #ff0000;
+       }
+   </style>
+</head>
+<body>
+   <h1>VAT and GST Calculator</h1>
+   <form method="POST">
+       <label for="value">Enter a value:</label>
+       <input type="text" id="value" name="value" required>
+       <button type="submit">Calculate</button>
+   </form>
+   {% if result %}
+       {% if result.error %}
+           <p class="error">{{ result.error }}</p>
+       {% else %}
+           <div class="result">
+               <p>Value entered: {{ result.value }}</p>
+               <p>Value without VAT: {{ result.value_without_vat }}</p>
+               <p>Value with 5% GST: {{ result.value_with_gst }}</p>
+           </div>
+       {% endif %}
+   {% endif %}
+</body>
+</html>
